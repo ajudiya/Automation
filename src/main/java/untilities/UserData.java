@@ -24,4 +24,5 @@ public class UserData {
     public String loginPassword = "Jay@1234";
     public String inValidLoginEmail = "jai.ajudiyaaa@gmail.com";
     public String file = "/home/ganesha/Downloads/file-example_PDF_1MB.pdf";
+    public String search = "White";
 }
