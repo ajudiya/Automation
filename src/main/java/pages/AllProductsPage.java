@@ -41,4 +41,8 @@ public class AllProductsPage extends BasePage {
     public void setFirstProductViewButton(){
         firstProductViewButton.click();
     }
+
+    // new test
+
+    // second tests
 }
