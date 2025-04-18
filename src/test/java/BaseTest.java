@@ -10,7 +10,7 @@ import java.time.Duration;
 public class BaseTest {
     protected WebDriver driver;
     protected String baseUrl = "https://automationexercise.com/";
-    private JavascriptExecutor js;
+    public JavascriptExecutor js;
     @BeforeMethod
     public void setup(){
         WebDriverManager.chromedriver().setup();
