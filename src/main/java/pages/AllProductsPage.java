@@ -45,4 +45,6 @@ public class AllProductsPage extends BasePage {
     // new test
 
     // second tests
+
+    // Third tests
 }
