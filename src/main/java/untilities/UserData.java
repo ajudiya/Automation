@@ -26,4 +26,10 @@ public class UserData {
     public String file = "/home/ganesha/Downloads/file-example_PDF_1MB.pdf";
     public String search = "White";
     public String subscriptionEmail = "jai.patel@gmail.com";
+    public String cardName = "Jay Patel";
+    public String cardNumber = "424242424242";
+    public String cvc = "123";
+    public String expiryMonth = "12";
+    public String expiryYear = "2026";
+
 }

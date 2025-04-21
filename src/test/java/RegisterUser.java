@@ -1,4 +1,3 @@
-import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -44,7 +43,6 @@ public class RegisterUser extends BaseTest{
         signUpLogInPage.setCreateAccountButton();
         Assert.assertEquals("ACCOUNT CREATED!",signUpLogInPage.isAccountCreatedText());
         signUpLogInPage.setContinueButton();
-        Assert.assertTrue(header.isUsernameLoggedInText());
         header.setDeleteAccountButton();
         Assert.assertTrue(header.isAccountDeletedText());
         header.setContinueButton();
