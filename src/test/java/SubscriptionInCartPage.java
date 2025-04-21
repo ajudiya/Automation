@@ -1,4 +1,3 @@
-import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -6,21 +5,20 @@ import pages.Footer;
 import pages.Header;
 import untilities.UserData;
 
-public class FooterSubscriptionTest extends BaseTest{
-    private Footer footer;
+public class SubscriptionInCartPage extends BaseTest{
     private Header header;
+    private Footer footer;
     private UserData userData;
     @BeforeMethod
     public void inIt(){
-        footer = new Footer(driver);
         header = new Header(driver);
-        js = (JavascriptExecutor) driver;
+        footer = new Footer(driver);
         userData = new UserData();
     }
     @Test
-    public void subscriptionEmailTest(){
-        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
-        Assert.assertTrue(footer.isSubscriptionText());
+    public void subscriptionCartTest(){
+        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        header.setCartLink();
         footer.setSubscriptionEmailField(userData.subscriptionEmail);
         footer.setSubscriptionButton();
         Assert.assertTrue(footer.isSuccessMsg());

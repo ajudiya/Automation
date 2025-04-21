@@ -75,4 +75,7 @@ public class Header extends BasePage {
     public void setProductLink(){
         productLink.click();
     }
+    public void setCartLink(){
+        cartLink.click();
+    }
 }
