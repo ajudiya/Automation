@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
@@ -11,6 +12,7 @@ public class BaseTest {
     protected WebDriver driver;
     protected String baseUrl = "https://automationexercise.com/";
     public JavascriptExecutor js;
+    public SoftAssert sf;
     @BeforeMethod
     public void setup(){
         WebDriverManager.chromedriver().setup();

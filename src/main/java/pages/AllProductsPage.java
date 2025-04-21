@@ -25,6 +25,10 @@ public class AllProductsPage extends BasePage {
     private WebElement firstProductHover;
     @FindBy(xpath = "//div[@class='col-sm-4'][1]//a[@class='btn btn-default add-to-cart']")
     private WebElement firstProductAddToCartButton;
+    @FindBy(xpath = "//div[@class='col-sm-4'][2]//div[@class='single-products']")
+    private WebElement secondProductHover;
+    @FindBy(xpath = "//div[@class='col-sm-4'][2]//a[@class='btn btn-default add-to-cart']")
+    private WebElement secondProductAddToCartButton;
 
     @FindBy(xpath = "//a[@href='/product_details/1']")
     private WebElement firstProductViewButton;
@@ -34,6 +38,18 @@ public class AllProductsPage extends BasePage {
     private WebElement searchButton;
     @FindBy (xpath = "//div[@class='productinfo text-center']/p")
     private List<WebElement> productNameContain;
+    @FindBy(xpath = "//button[@class='btn btn-success close-modal btn-block']")
+    private WebElement continueButton;
+    @FindBy(xpath = "//p[@class='text-center']/a")
+    private WebElement viewCartButton;
+    @FindBy(xpath = "//div[@class='col-sm-4'][1]//p")
+    private WebElement firstProductName;
+    @FindBy(xpath = "//div[@class='col-sm-4'][1]//h2")
+    private WebElement firstProductPrice;
+    @FindBy(xpath = "//div[@class='col-sm-4'][2]//p")
+    private WebElement secondProductName;
+    @FindBy(xpath = "//div[@class='col-sm-4'][2]//h2")
+    private WebElement secondProductPrice;
 
     public boolean isAllProductText() {
         return allProductText.isDisplayed();
@@ -64,6 +80,35 @@ public class AllProductsPage extends BasePage {
     }
     public boolean setProductNameContain(){
         return productNameContain.stream().allMatch(productNameContain->productNameContain.getText().contains(userData.search));
+    }
+    public void setSecondProductHover() {
+        actions.moveToElement(secondProductHover).perform();
+    }
+
+    public void setSecondProductAddToCartButton() {
+        secondProductAddToCartButton.click();
+    }
+    public void setContinueButton(){
+        continueButton.click();
+    }
+    public void setViewCartButton(){
+        viewCartButton.click();
+    }
+    public String setFirstProductName(){
+        System.out.println("First product Name: "+firstProductName.getText());
+        return firstProductName.getText();
+    }
+    public String setFirstProductPrice(){
+        System.out.println("First product Price: "+firstProductPrice.getText());
+        return firstProductPrice.getText();
+    }
+    public String setSecondProductName(){
+        System.out.println("Second product Name: "+secondProductName.getText());
+        return secondProductName.getText();
+    }
+    public String setSecondProductPrice(){
+        System.out.println("Second product Price: "+secondProductPrice.getText());
+        return secondProductPrice.getText();
     }
 
     // new test
