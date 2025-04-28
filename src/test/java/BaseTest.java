@@ -17,10 +17,10 @@ public class BaseTest {
     public void setup(){
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.get(baseUrl);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        driver.manage().deleteAllCookies();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
     @AfterMethod
     public void cleanUp()throws InterruptedException{

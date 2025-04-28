@@ -10,13 +10,14 @@ import pages.Header;
 import untilities.UserData;
 import org.testng.asserts.SoftAssert;
 
-public class AddProductsInCartTest extends BaseTest{
+public class AddProductsInCartTest extends BaseTest {
     private Header header;
     private AllProductsPage allProductsPage;
     private CartPage cartPage;
     private UserData userData;
+
     @BeforeMethod
-    public void inIt(){
+    public void inIt() {
         header = new Header(driver);
         allProductsPage = new AllProductsPage(driver);
         userData = new UserData();
@@ -24,8 +25,9 @@ public class AddProductsInCartTest extends BaseTest{
         cartPage = new CartPage(driver);
         sf = new SoftAssert();
     }
+
     @Test
-    public void addProductsInCartTest(){
+    public void addProductsInCartTest() {
         Assert.assertEquals("color: orange;", header.isHomePageVisible());
         header.setProductLink();
         String firstProductName = allProductsPage.setFirstProductName();
@@ -39,11 +41,23 @@ public class AddProductsInCartTest extends BaseTest{
         allProductsPage.setSecondProductHover();
         allProductsPage.setSecondProductAddToCartButton();
         allProductsPage.setViewCartButton();
-        sf.assertEquals(firstProductName,cartPage.setFirstProductName());
-        sf.assertEquals(SecondProductName,cartPage.setSecondProductName());
-        Assert.assertEquals(firstProductPrice,cartPage.setFirstProductPrice());
-        Assert.assertEquals(secondProductPrice,cartPage.setSecondProductPrice());
-        Assert.assertEquals(cartPage.setFirstProductPrice(),cartPage.setFirstProductTotalQty());
-        Assert.assertEquals(cartPage.setSecondProductPrice(),cartPage.setSecondProductTotalQty());
+        sf.assertEquals(firstProductName, cartPage.setFirstProductName());
+        sf.assertEquals(SecondProductName, cartPage.setSecondProductName());
+        Assert.assertEquals(firstProductPrice, cartPage.setFirstProductPrice());
+        Assert.assertEquals(secondProductPrice, cartPage.setSecondProductPrice());
+        Assert.assertEquals(cartPage.setFirstProductPrice(), cartPage.setFirstProductTotalQty());
+        Assert.assertEquals(cartPage.setSecondProductPrice(), cartPage.setSecondProductTotalQty());
+    }
+
+    @Test
+    public void addAllProductsToCart() {
+        js.executeScript("window.scrollBy(0, 250)");
+        allProductsPage.funHoverAllProducts();
+    }
+
+    @Test
+    public void addAllProductsToCart2() {
+        allProductsPage.funAddToCartAllProducts();
+        header.setCartLink();
     }
 }
