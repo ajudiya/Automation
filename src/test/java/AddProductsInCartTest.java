@@ -50,13 +50,13 @@ public class AddProductsInCartTest extends BaseTest {
     }
 
     @Test
-    public void addAllProductsToCart() {
+    public void allProductsHoverTest() {
         js.executeScript("window.scrollBy(0, 250)");
         allProductsPage.funHoverAllProducts();
     }
 
     @Test
-    public void addAllProductsToCart2() {
+    public void addAllProductsToCartTest() {
         allProductsPage.funAddToCartAllProducts();
         header.setCartLink();
     }
