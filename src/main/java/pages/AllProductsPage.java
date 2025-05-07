@@ -74,7 +74,8 @@ public class AllProductsPage extends BasePage {
 
     public void funAddToCartAllProducts() {
         int addToCartCount = listAddToCartButton.size();
-        System.out.println("Cart button count: " + addToCartCount);
+
+        System.out.println("products count in HOME page: " + addToCartCount);
         for (WebElement cartButton : listAddToCartButton) {
             if (cartButton.isDisplayed()) {
                 js.executeScript("arguments[0].scrollIntoView(true);", cartButton);
@@ -84,6 +85,9 @@ public class AllProductsPage extends BasePage {
                 System.out.println("cart button is not display");
             }
         }
+    }
+    public int isAllProductDisplayed(){
+        return listAddToCartButton.size();
     }
 
     public boolean isAllProductText() {

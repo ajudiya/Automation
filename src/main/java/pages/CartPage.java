@@ -33,6 +33,13 @@ public class CartPage extends BasePage {
     private WebElement checkoutButton;
     @FindBy(xpath = "//p//a[@href='/login']")
     private WebElement registerLogInLink;
+    @FindBy(xpath = "//tbody/tr[contains(@id,'product')]")
+    private List<WebElement> allProducts;
+
+    public int isAllProductDisplayed(){
+        System.out.println("products count in cart: "+allProducts.size());
+        return allProducts.size();
+    }
 
     public String setFirstProductName() {
         System.out.println("Cart First Product Name: " + firstProductName.getText());

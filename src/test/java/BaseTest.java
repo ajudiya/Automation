@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
@@ -21,6 +22,7 @@ public class BaseTest {
         driver.manage().window().maximize();
         driver.get(baseUrl);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        PageFactory.initElements(driver, this);
     }
     @AfterMethod
     public void cleanUp()throws InterruptedException{

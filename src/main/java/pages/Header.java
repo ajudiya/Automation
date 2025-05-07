@@ -46,10 +46,6 @@ public class Header extends BasePage {
     public void setSignUpLogInLink(){
         signUpLogInLink.click();
     }
-//    public String isUsernameLoggedInText(){
-//        System.out.println("username text "+usernameLoggedIn.getText());
-//        return usernameLoggedIn.getText();
-//    }
     public boolean isUsernameLoggedInText(){
         System.out.println("username "+usernameLoggedIn.getText());
         return usernameLoggedIn.isDisplayed();

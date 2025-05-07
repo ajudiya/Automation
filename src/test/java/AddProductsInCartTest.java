@@ -59,5 +59,6 @@ public class AddProductsInCartTest extends BaseTest {
     public void addAllProductsToCartTest() {
         allProductsPage.funAddToCartAllProducts();
         header.setCartLink();
+        Assert.assertEquals(cartPage.isAllProductDisplayed(),34);
     }
 }

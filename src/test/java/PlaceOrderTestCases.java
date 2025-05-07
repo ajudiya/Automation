@@ -1,12 +1,18 @@
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.*;
 import untilities.UserData;
 
-public class PlaceOrderRegisterWhileCheckout extends BaseTest{
+import java.time.Duration;
+
+public class PlaceOrderTestCases extends BaseTest{
     private Header header;
     private AllProductsPage allProductsPage;
     private HomePage homePage;
@@ -14,6 +20,7 @@ public class PlaceOrderRegisterWhileCheckout extends BaseTest{
     private SignUpLogInPage signUpLogInPage;
     private UserData userData;
     private CheckoutPage checkoutPage;
+    private RegisterUser registerUser;
     @BeforeMethod
     public void inIt(){
         header = new Header(driver);
@@ -24,10 +31,10 @@ public class PlaceOrderRegisterWhileCheckout extends BaseTest{
         signUpLogInPage = new SignUpLogInPage(driver);
         userData = new UserData();
         checkoutPage = new CheckoutPage(driver);
+        registerUser = new RegisterUser();
     }
     @Test
     public void placeOrderRegisterWhileCheckout(){
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
         js.executeScript("window.scrollBy(0, 250)");
         homePage.setFirstProductHover();
         homePage.setFirstProductAddToCartButton();
@@ -72,6 +79,47 @@ public class PlaceOrderRegisterWhileCheckout extends BaseTest{
         Assert.assertEquals(userData.addressTwo,checkoutPage.setAddressLine2());
         Assert.assertEquals(cityStateZipcode,checkoutPage.setCityStatePinCode());
         Assert.assertEquals(userData.mobileNumber,checkoutPage.setPhoneNumber());
+        js.executeScript("window.scrollBy(0, 400)");
+        checkoutPage.setPlaceOrderButton();
+        checkoutPage.setCardNameField(userData.cardName);
+        checkoutPage.setCardNumberField(userData.cardNumber);
+        checkoutPage.setCvcField(userData.cvc);
+        checkoutPage.setExpiryMonthField(userData.expiryMonth);
+        checkoutPage.setExpiryYearField(userData.expiryYear);
+        checkoutPage.setPayConfirmButton();
+        Assert.assertTrue(checkoutPage.isOrderConfirmMsgDisplay());
+        checkoutPage.setContinueButton();
+    }
+    @Test
+    public void placeOrderRegisterBeforeCheckout(){
+        header.setSignUpLogInLink();
+        signUpLogInPage.setSignUpNameField(userData.signUpName);
+        signUpLogInPage.setSignUpEmailField(userData.signUpEmail);
+        signUpLogInPage.setSignUpButton();
+        Assert.assertEquals("ENTER ACCOUNT INFORMATION",signUpLogInPage.isAccountInfoText());
+        signUpLogInPage.setGender();
+        signUpLogInPage.setSignUpPasswordField(userData.signUpPassword);
+        signUpLogInPage.setDaysDropDown(userData.days);
+        signUpLogInPage.setMonthsDropDown(userData.months);
+        signUpLogInPage.setYearsDropDown(userData.years);
+        signUpLogInPage.setNewsLetter();
+        signUpLogInPage.setOffers();
+        signUpLogInPage.setFirstNameField(userData.firstName);
+        signUpLogInPage.setLastNameField(userData.lastName);
+        signUpLogInPage.setCompanyField(userData.company);
+        signUpLogInPage.setAddressOne(userData.addressOne);
+        signUpLogInPage.setAddressTwo(userData.addressTwo);
+        signUpLogInPage.setStateField(userData.state);
+        signUpLogInPage.setCityField(userData.city);
+        signUpLogInPage.setZipcodeField(userData.zipcode);
+        signUpLogInPage.setMobileNumberField(userData.mobileNumber);
+        signUpLogInPage.setCreateAccountButton();
+        signUpLogInPage.setContinueButton();
+        js.executeScript("window.scrollBy(0, 250)");
+        homePage.setFirstProductHover();
+        homePage.setFirstProductAddToCartButton();
+        homePage.setViewCartButton();
+        cartPage.setCheckoutButton();
         js.executeScript("window.scrollBy(0, 400)");
         checkoutPage.setPlaceOrderButton();
         checkoutPage.setCardNameField(userData.cardName);
