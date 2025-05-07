@@ -1,8 +1,12 @@
 package untilities;
 
+import org.openqa.selenium.WebDriver;
+
 import java.util.Random;
 
 public class UserData {
+    WebDriver driver;
+
     Random random = new Random();
     public String signUpName = "Jay";
     public String signUpEmail = "jai.patel+"+random.nextInt(1000)+"@gmail.com";
@@ -20,7 +24,7 @@ public class UserData {
     public String city = "Ahmedabad";
     public String zipcode = "382481";
     public String mobileNumber = "9898989898";
-    public String loginEmail = "jai.patel@gmail.com";
+    public String loginEmail = "jai.ajudiya@gmail.com";
     public String loginPassword = "Jay@1234";
     public String inValidLoginEmail = "jai.ajudiyaaa@gmail.com";
     public String file = "/home/ganesha/Downloads/file-example_PDF_1MB.pdf";
@@ -32,4 +36,7 @@ public class UserData {
     public String expiryMonth = "12";
     public String expiryYear = "2026";
 
+    public void handleAlert(){
+        driver.switchTo().alert().dismiss();
+    }
 }
