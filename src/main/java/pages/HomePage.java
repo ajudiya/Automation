@@ -44,6 +44,9 @@ public class HomePage extends BasePage {
     @FindBy (xpath = "(//div[@id='Men']/div/ul/li/a)[1]")
     private WebElement tShirtsSubCategoryFilter;
 
+    @FindBy (xpath = "(//div[@class='brands-name']/ul/li/a)[1]")
+    private WebElement poloBrandFilter;
+
     public void setFirstProductHover() {
         actions.moveToElement(firstProductHover).perform();
     }
@@ -72,5 +75,8 @@ public class HomePage extends BasePage {
     }
     public void settShirtsSubCategoryFilter(){
         tShirtsSubCategoryFilter.click();
+    }
+    public void setPoloBrandFilter(){
+        poloBrandFilter.click();
     }
 }

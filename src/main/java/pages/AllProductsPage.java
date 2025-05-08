@@ -59,7 +59,7 @@ public class AllProductsPage extends BasePage {
     @FindBy(xpath = "//div[@class='features_items']//div[@class='productinfo text-center']//a/i")
     private List<WebElement> listAddToCartButton;
     @FindBy(xpath = "//h2[@class='title text-center']")
-    private WebElement womanDressProductText;
+    private WebElement h2TitleText;
 
     public void funHoverAllProducts() {
         int productCount = allProductHover.size();
@@ -142,6 +142,7 @@ public class AllProductsPage extends BasePage {
         viewCartButton.click();
     }
 
+
     public String setFirstProductName() {
         System.out.println("First product Name: " + firstProductName.getText());
         return firstProductName.getText();
@@ -161,9 +162,9 @@ public class AllProductsPage extends BasePage {
         System.out.println("Second product Price: " + secondProductPrice.getText());
         return secondProductPrice.getText();
     }
-    public String isWomenDressProductsDisplayed(){
-        System.out.println(womanDressProductText.getText());
-        return womanDressProductText.getText();
+    public String isH2TitleTextDisplayed(){
+        System.out.println(h2TitleText.getText());
+        return h2TitleText.getText();
     }
 
     // new test

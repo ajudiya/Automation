@@ -19,6 +19,7 @@ public class ProductDetailPage extends BasePage {
     private WebElement productCondition;
     @FindBy (xpath = "//div[@class='product-information']/p[4]")
     private WebElement productBrand;
+
     public String setProductName(){
         System.out.println("Product name: "+productName.getText());
         return productName.getText();
@@ -39,5 +40,4 @@ public class ProductDetailPage extends BasePage {
         System.out.println("Product brand: "+productBrand.getText());
         return productBrand.isDisplayed();
     }
-
 }

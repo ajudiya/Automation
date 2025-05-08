@@ -175,8 +175,14 @@ public class PlaceOrderTestCases extends BaseTest {
         Assert.assertTrue(homePage.isAllFiltersDisplayed()>0,"No categories are visible under the category section");
         homePage.setWomenCategoryFilter();
         homePage.setDressSubCategoryFilter();
-        Assert.assertEquals("WOMEN -  DRESS PRODUCTS", allProductsPage.isWomenDressProductsDisplayed());
+        Assert.assertEquals(allProductsPage.isH2TitleTextDisplayed(), "WOMEN -  DRESS PRODUCTS");
         homePage.setMenCategoryFilter();
         homePage.settShirtsSubCategoryFilter();
+    }
+    @Test
+    public void viewBrandProducts(){
+        header.setProductLink();
+        homePage.setPoloBrandFilter();
+        Assert.assertEquals(allProductsPage.isH2TitleTextDisplayed(), "BRAND - POLO PRODUCTS");
     }
 }
