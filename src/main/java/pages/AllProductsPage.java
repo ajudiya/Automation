@@ -58,6 +58,8 @@ public class AllProductsPage extends BasePage {
     private List<WebElement> allProductHover;
     @FindBy(xpath = "//div[@class='features_items']//div[@class='productinfo text-center']//a/i")
     private List<WebElement> listAddToCartButton;
+    @FindBy(xpath = "//h2[@class='title text-center']")
+    private WebElement womanDressProductText;
 
     public void funHoverAllProducts() {
         int productCount = allProductHover.size();
@@ -158,6 +160,10 @@ public class AllProductsPage extends BasePage {
     public String setSecondProductPrice() {
         System.out.println("Second product Price: " + secondProductPrice.getText());
         return secondProductPrice.getText();
+    }
+    public String isWomenDressProductsDisplayed(){
+        System.out.println(womanDressProductText.getText());
+        return womanDressProductText.getText();
     }
 
     // new test

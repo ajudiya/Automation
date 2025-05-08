@@ -170,4 +170,13 @@ public class PlaceOrderTestCases extends BaseTest {
         homePage.setViewCartButton();
         cartPage.setRemoveProductButton();
     }
+    @Test
+    public void viewCategoryProducts(){
+        Assert.assertTrue(homePage.isAllFiltersDisplayed()>0,"No categories are visible under the category section");
+        homePage.setWomenCategoryFilter();
+        homePage.setDressSubCategoryFilter();
+        Assert.assertEquals("WOMEN -  DRESS PRODUCTS", allProductsPage.isWomenDressProductsDisplayed());
+        homePage.setMenCategoryFilter();
+        homePage.settShirtsSubCategoryFilter();
+    }
 }
