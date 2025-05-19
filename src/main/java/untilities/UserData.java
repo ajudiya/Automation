@@ -35,6 +35,9 @@ public class UserData {
     public String cvc = "123";
     public String expiryMonth = "12";
     public String expiryYear = "2026";
+    public String reviewName = "Jay";
+    public String reviewEmail = "jay.patel@gmail.com";
+    public String reviewComment = "Awesome products, suggest to buy";
 
     public void handleAlert(){
         driver.switchTo().alert().dismiss();

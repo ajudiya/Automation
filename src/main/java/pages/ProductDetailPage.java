@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import untilities.BasePage;
+import untilities.UserData;
 
 public class ProductDetailPage extends BasePage {
     public ProductDetailPage(WebDriver driver) {
@@ -19,6 +20,18 @@ public class ProductDetailPage extends BasePage {
     private WebElement productCondition;
     @FindBy (xpath = "//div[@class='product-information']/p[4]")
     private WebElement productBrand;
+    @FindBy (xpath = "//li[@class='active']/a")
+    private WebElement writeYourReviewsText;
+    @FindBy (id = "name")
+    private WebElement reviewName;
+    @FindBy (id = "email")
+    private WebElement reviewEmail;
+    @FindBy (id = "review")
+    private WebElement reviewComment;
+    @FindBy (id = "button-review")
+    private WebElement reviewSubmitButton;
+    @FindBy (xpath = "//div[@class='alert-success alert']/span")
+    private WebElement reviewSuccessMsg;
 
     public String setProductName(){
         System.out.println("Product name: "+productName.getText());
@@ -39,5 +52,23 @@ public class ProductDetailPage extends BasePage {
     public boolean isProductBrand(){
         System.out.println("Product brand: "+productBrand.getText());
         return productBrand.isDisplayed();
+    }
+    public boolean isWriteYourReviewsText(){
+        return writeYourReviewsText.isDisplayed();
+    }
+    public void setReviewName(String name){
+        reviewName.sendKeys(name);
+    }
+    public void setReviewEmail(String email){
+        reviewEmail.sendKeys(email);
+    }
+    public void setReviewComment(String comment){
+        reviewComment.sendKeys(comment);
+    }
+    public void setReviewSubmitButton(){
+        reviewSubmitButton.click();
+    }
+    public boolean setReviewSuccessMsg(){
+        return reviewSuccessMsg.isDisplayed();
     }
 }

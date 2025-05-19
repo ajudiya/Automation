@@ -185,4 +185,19 @@ public class PlaceOrderTestCases extends BaseTest {
         homePage.setPoloBrandFilter();
         Assert.assertEquals(allProductsPage.isH2TitleTextDisplayed(), "BRAND - POLO PRODUCTS");
     }
+    @Test
+    public void SearchProductsAndVerifyCartAfterLogin(){
+        header.setProductLink();
+        allProductsPage.setSearchBarField(userData.search);
+        allProductsPage.setSearchButton();
+        Assert.assertEquals(allProductsPage.isH2TitleTextDisplayed(), "SEARCHED PRODUCTS");
+        allProductsPage.funAddToCartAllProducts();
+        header.setCartLink();
+        cartPage.setCheckoutButton();
+        cartPage.setRegisterLogInLink();
+        signUpLogInPage.setLoginEmailField(userData.loginEmail);
+        signUpLogInPage.setLoginPasswordField(userData.loginPassword);
+        signUpLogInPage.setLoginButton();
+        header.setCartLink();
+    }
 }

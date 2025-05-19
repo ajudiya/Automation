@@ -60,6 +60,8 @@ public class AllProductsPage extends BasePage {
     private List<WebElement> listAddToCartButton;
     @FindBy(xpath = "//h2[@class='title text-center']")
     private WebElement h2TitleText;
+    @FindBy(xpath = "//a[@href='/product_details/1']")
+    private WebElement viewProductButton;
 
     public void funHoverAllProducts() {
         int productCount = allProductHover.size();
@@ -165,6 +167,9 @@ public class AllProductsPage extends BasePage {
     public String isH2TitleTextDisplayed(){
         System.out.println(h2TitleText.getText());
         return h2TitleText.getText();
+    }
+    public void setViewProductButton(){
+        viewProductButton.click();
     }
 
     // new test
