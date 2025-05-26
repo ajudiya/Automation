@@ -14,7 +14,7 @@ public class TestCaseTest extends BaseTest{
     }
     @Test
     public void verifyTestCasePageLanded(){
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
         header.setTestCasesLink();
         Assert.assertTrue(testCasePage.isTextCaseText());
     }

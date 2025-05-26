@@ -145,7 +145,7 @@ public class PlaceOrderTestCases extends BaseTest {
         signUpLogInPage.setLoginButton();
         Assert.assertTrue(header.isUsernameLoggedInText());
 
-        js.executeScript("window.scrollBy(0, 300)");
+        js.executeScript("window.scrollBy(0, 250)");
         homePage.setFirstProductHover();
         homePage.setFirstProductAddToCartButton();
         homePage.setViewCartButton();
@@ -199,5 +199,31 @@ public class PlaceOrderTestCases extends BaseTest {
         signUpLogInPage.setLoginPasswordField(userData.loginPassword);
         signUpLogInPage.setLoginButton();
         header.setCartLink();
+    }
+    @Test
+    public void downloadInvoiceAfterPurchaseOrder(){
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
+        js.executeScript("window.scrollBy(0, 250)");
+        homePage.setFirstProductHover();
+        homePage.setFirstProductAddToCartButton();
+        homePage.setViewCartButton();
+        String cartPageUrl = driver.getCurrentUrl();
+        Assert.assertEquals(cartPageUrl,"https://automationexercise.com/view_cart");
+        cartPage.setCheckoutButton();
+        cartPage.setRegisterLogInLink();
+        signUpLogInPage.setLoginEmailField(userData.loginEmail);
+        signUpLogInPage.setLoginPasswordField(userData.loginPassword);
+        signUpLogInPage.setLoginButton();
+        header.setCartLink();
+        cartPage.setCheckoutButton();
+        cartPage.setCheckoutButton();
+        checkoutPage.setCardNameField(userData.cardName);
+        checkoutPage.setCardNumberField(userData.cardNumber);
+        checkoutPage.setCvcField(userData.cvc);
+        checkoutPage.setExpiryMonthField(userData.expiryMonth);
+        checkoutPage.setExpiryYearField(userData.expiryYear);
+        checkoutPage.setPayConfirmButton();
+        checkoutPage.setDownloadInvoice();
+        checkoutPage.setContinueButton();
     }
 }

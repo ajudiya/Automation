@@ -4,9 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-import pages.AllProductsPage;
-import pages.CartPage;
-import pages.Header;
+import pages.*;
 import untilities.UserData;
 import org.testng.asserts.SoftAssert;
 
@@ -15,6 +13,9 @@ public class AddProductsInCartTest extends BaseTest {
     private AllProductsPage allProductsPage;
     private CartPage cartPage;
     private UserData userData;
+    private HomePage homePage;
+    private SignUpLogInPage signUpLogInPage;
+    private CheckoutPage checkoutPage;
 
     @BeforeMethod
     public void inIt() {
@@ -24,11 +25,14 @@ public class AddProductsInCartTest extends BaseTest {
         js = (JavascriptExecutor) driver;
         cartPage = new CartPage(driver);
         sf = new SoftAssert();
+        homePage = new HomePage(driver);
+        signUpLogInPage = new SignUpLogInPage(driver);
+        checkoutPage = new CheckoutPage(driver);
     }
 
     @Test
     public void addProductsInCartTest() {
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
         header.setProductLink();
         String firstProductName = allProductsPage.setFirstProductName();
         String SecondProductName = allProductsPage.setSecondProductName();
@@ -60,5 +64,12 @@ public class AddProductsInCartTest extends BaseTest {
         allProductsPage.funAddToCartAllProducts();
         header.setCartLink();
         Assert.assertEquals(cartPage.isAllProductDisplayed(),34);
+    }
+    @Test
+    public void addToCartFromRecommended(){
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        Assert.assertTrue(homePage.isRecommendedItemsDisplay());
+        homePage.setRecommendedAddToCart();
+        allProductsPage.setViewCartButton();
     }
 }

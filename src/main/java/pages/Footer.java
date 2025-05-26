@@ -18,6 +18,9 @@ public class Footer extends BasePage {
     private WebElement subscriptionButton;
     @FindBy(xpath = "//div[@class='alert-success alert']")
     private WebElement successMsg;
+    @FindBy(id = "scrollUp")
+    private WebElement scrollUpButton;
+
     public boolean isSubscriptionText(){
         return subscriptionText.isDisplayed();
     }
@@ -30,5 +33,8 @@ public class Footer extends BasePage {
     public boolean isSuccessMsg(){
         System.out.println("Message is displayed "+"'"+successMsg.getText()+"'");
         return successMsg.isDisplayed();
+    }
+    public void setScrollUpButton(){
+        scrollUpButton.click();
     }
 }

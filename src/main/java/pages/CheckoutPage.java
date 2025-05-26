@@ -44,6 +44,8 @@ public class CheckoutPage extends BasePage {
     private WebElement orderConfirmMsg;
     @FindBy(xpath = "//div[@class='col-sm-9 col-sm-offset-1']/div/a")
     private WebElement continueButton;
+    @FindBy(xpath = "//a[@class='btn btn-default check_out']")
+    private WebElement downloadInvoice;
 
 
     public String setFirstProductName() {
@@ -112,5 +114,8 @@ public class CheckoutPage extends BasePage {
     }
     public void setContinueButton(){
         continueButton.click();
+    }
+    public void setDownloadInvoice (){
+        downloadInvoice.click();
     }
 }

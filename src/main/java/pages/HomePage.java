@@ -47,6 +47,12 @@ public class HomePage extends BasePage {
     @FindBy (xpath = "(//div[@class='brands-name']/ul/li/a)[1]")
     private WebElement poloBrandFilter;
 
+    @FindBy (xpath = "(//div[@id='recommended-item-carousel']//i[@class='fa fa-shopping-cart'])[4]")
+    private WebElement recommendedAddToCart;
+
+    @FindBy (xpath = "(//h2[@class='title text-center'])[2]")
+    private WebElement recommendedItemsText;
+
     public void setFirstProductHover() {
         actions.moveToElement(firstProductHover).perform();
     }
@@ -78,5 +84,12 @@ public class HomePage extends BasePage {
     }
     public void setPoloBrandFilter(){
         poloBrandFilter.click();
+    }
+    public void setRecommendedAddToCart(){
+        recommendedAddToCart.click();
+    }
+    public boolean isRecommendedItemsDisplay(){
+        System.out.println("recommended items = "+recommendedAddToCart.getText());
+        return recommendedItemsText.isDisplayed();
     }
 }
