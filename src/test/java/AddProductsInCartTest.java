@@ -72,4 +72,8 @@ public class AddProductsInCartTest extends BaseTest {
         homePage.setRecommendedAddToCart();
         allProductsPage.setViewCartButton();
     }
+    @Test
+    public void printText(){
+        System.out.println("It worked!");
+    }
 }

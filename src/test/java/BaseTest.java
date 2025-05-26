@@ -2,9 +2,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
@@ -14,8 +17,18 @@ public class BaseTest {
     protected String baseUrl = "https://automationexercise.com/";
     public JavascriptExecutor js;
     public SoftAssert sf;
+    @Parameters("browser")
     @BeforeMethod
-    public void setup(){
+    public void setup(@Optional("chrome") String browser){
+//        if (browser.equalsIgnoreCase("chrome")) {
+//            WebDriverManager.chromedriver().setup();
+//            driver = new ChromeDriver();
+//        } else if (browser.equalsIgnoreCase("firefox")) {
+//            WebDriverManager.firefoxdriver().setup();
+//            driver = new FirefoxDriver();
+//        } else {
+//            throw new IllegalArgumentException("Browser not supported: " + browser);
+//        }
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().deleteAllCookies();

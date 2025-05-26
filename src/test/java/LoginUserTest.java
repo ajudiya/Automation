@@ -17,7 +17,7 @@ public class LoginUserTest extends BaseTest {
         signUpLogInPage = new SignUpLogInPage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void loginUserWithValidTest() {
         Assert.assertEquals("color: orange;", header.isHomePageVisible());
         header.setSignUpLogInLink();
@@ -29,7 +29,7 @@ public class LoginUserTest extends BaseTest {
         header.setLogoutButton();
     }
 
-    @Test
+    @Test(priority = 2)
     public void loginUserWithInValidEmailTest() {
         Assert.assertEquals("color: orange;", header.isHomePageVisible());
         header.setSignUpLogInLink();
@@ -39,7 +39,7 @@ public class LoginUserTest extends BaseTest {
         signUpLogInPage.setLoginButton();
         Assert.assertTrue(signUpLogInPage.isInvalidEmailPassMag());
     }
-    @Test
+    @Test(priority = 3)
     public void logOutTest() {
         Assert.assertEquals("color: orange;", header.isHomePageVisible());
         header.setSignUpLogInLink();
