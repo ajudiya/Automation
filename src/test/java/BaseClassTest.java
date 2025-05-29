@@ -2,20 +2,19 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 
-public class BaseTest {
+public class BaseClassTest {
     protected WebDriver driver;
     protected String baseUrl = "https://automationexercise.com/";
     public JavascriptExecutor js;
     public SoftAssert sf;
     @Parameters("browser")
-    @BeforeMethod
+    @BeforeClass
     public void setup(@Optional("chrome") String browser){
 //        if (browser.equalsIgnoreCase("chrome")) {
 //            WebDriverManager.chromedriver().setup();
@@ -45,7 +44,7 @@ public class BaseTest {
                 {"@gmail.com","Jay@1234",false}
         };
     }
-    @AfterMethod
+    @AfterClass
     public void cleanUp()throws InterruptedException{
         Thread.sleep(3000);
         driver.quit();

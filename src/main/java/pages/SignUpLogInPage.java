@@ -207,4 +207,10 @@ public class SignUpLogInPage extends BasePage {
     public boolean isExistedEmailMsg(){
         return existedEmailValidationMsg.isDisplayed();
     }
+    public void logInEmailFieldClear(){
+        loginEmailField.click();
+    }
+    public void logInPasswordClear(){
+        loginPasswordField.clear();
+    }
 }

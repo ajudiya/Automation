@@ -1,5 +1,6 @@
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.Header;
 import pages.SignUpLogInPage;
@@ -19,7 +20,7 @@ public class LoginUserTest extends BaseTest {
 
     @Test(priority = 1)
     public void loginUserWithValidTest() {
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
         header.setSignUpLogInLink();
         Assert.assertTrue(signUpLogInPage.isLoginToYourAccountText());
         signUpLogInPage.setLoginEmailField(userData.loginEmail);
@@ -31,7 +32,7 @@ public class LoginUserTest extends BaseTest {
 
     @Test(priority = 2)
     public void loginUserWithInValidEmailTest() {
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
         header.setSignUpLogInLink();
         Assert.assertTrue(signUpLogInPage.isLoginToYourAccountText());
         signUpLogInPage.setLoginEmailField(userData.inValidLoginEmail);
@@ -41,7 +42,7 @@ public class LoginUserTest extends BaseTest {
     }
     @Test(priority = 3)
     public void logOutTest() {
-        Assert.assertEquals("color: orange;", header.isHomePageVisible());
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
         header.setSignUpLogInLink();
         Assert.assertTrue(signUpLogInPage.isLoginToYourAccountText());
         signUpLogInPage.setLoginEmailField(userData.loginEmail);
@@ -50,5 +51,17 @@ public class LoginUserTest extends BaseTest {
         Assert.assertTrue(header.isUsernameLoggedInText());
         header.setLogoutButton();
         Assert.assertTrue(signUpLogInPage.isLoginToYourAccountText());
+    }
+    @Test(dataProvider = "logInData")
+    public void logInTestCases(String email, String password, boolean isValid){
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
+        header.setSignUpLogInLink();
+        Assert.assertTrue(signUpLogInPage.isLoginToYourAccountText());
+        signUpLogInPage.logInEmailFieldClear();
+        signUpLogInPage.setLoginEmailField(email);
+        signUpLogInPage.logInPasswordClear();
+        signUpLogInPage.setLoginPasswordField(password);
+        signUpLogInPage.setLoginButton();
+        Assert.assertEquals(driver.getCurrentUrl(), "https://www.automationexercise.com/", "Login failed with valid credentials");
     }
 }
