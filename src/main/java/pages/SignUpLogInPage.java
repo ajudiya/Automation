@@ -219,4 +219,34 @@ public class SignUpLogInPage extends BasePage {
     public void signUpEmailFieldClear(){
         signUpEmailField.clear();
     }
+    public void signUpPasswordClear(){
+        signUpPasswordField.clear();
+    }
+    public void signUpFirstNameClear(){
+        firstNameField.clear();
+    }
+    public void signUpLastNameClear(){
+        lastNameField.clear();
+    }
+    public void companyFieldClear(){
+        companyField.clear();
+    }
+    public void addressOneClear(){
+        addressOneField.clear();
+    }
+    public void addressTwoClear(){
+        addressTwoField.clear();
+    }
+    public void stateClear(){
+        stateField.clear();
+    }
+    public void cityClear(){
+        cityField.clear();
+    }
+    public void zipcodeClear(){
+        zipcodeField.clear();
+    }
+    public void mobileNumberClear(){
+        mobileNumberField.clear();
+    }
 }

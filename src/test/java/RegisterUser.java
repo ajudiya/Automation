@@ -44,8 +44,8 @@ public class RegisterUser extends BaseTest{
         Assert.assertEquals("ENTER ACCOUNT INFORMATION",signUpLogInPage.isAccountInfoText());
         signUpLogInPage.setGender();
         signUpLogInPage.setSignUpPasswordField(userData.signUpPassword);
-        signUpLogInPage.setDaysDropDown(userData.days);
-        signUpLogInPage.setMonthsDropDown(userData.months);
+        signUpLogInPage.setDaysDropDown(Integer.parseInt(userData.days));
+        signUpLogInPage.setMonthsDropDown(Integer.parseInt(userData.months));
         signUpLogInPage.setYearsDropDown(userData.years);
         signUpLogInPage.setNewsLetter();
         signUpLogInPage.setOffers();

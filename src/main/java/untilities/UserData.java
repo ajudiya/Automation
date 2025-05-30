@@ -12,8 +12,8 @@ public class UserData {
     public String signUpEmail = "jai.patel+"+random.nextInt(1000)+"@gmail.com";
     public String gender = "male";
     public String signUpPassword = "Jay@1234";
-    public int days = 1;
-    public int months = 1;
+    public String days = "1";
+    public String months = "1";
     public String years = "1990";
     public String firstName = "Jay";
     public String lastName = "Patel";

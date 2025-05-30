@@ -7,6 +7,8 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseClassTest {
     protected WebDriver driver;
@@ -57,6 +59,16 @@ public class BaseClassTest {
                 {"Jay@1234", "@gmail.com"},
                 {"Jay", "jai.ajudiya@gmail.com"}
         };
+    }
+
+    @DataProvider(name="signUpDataSecondPage")
+    public Object[][] getSignUpDataSecondPage(){
+        List<Object[]> data = new ArrayList<>();
+
+        data.add(new Object[]{"Test@1234","22","10","2000","Jay","Patel","TestTech","India","India","Gujarat", "Ahmedabad","132465","9998979695"});
+        data.add(new Object[]{"Test@1234","15","5","2012","Jay@","Patel@","TestTechTestTechTestTech","IndiaIndiaIndia","IndiaIndiaIndia","GujaratIndiaIndia", "AhmedabadIndiaIndia","132465IndiaIndia","9998979695IndiaIndia"});
+        data.add(new Object[]{"Test@1234@##@12345646","26","8","2019","Jay@#14654@","Patel@@#1321465","TestTechTestTechTestTech@#@#@#","IndiaIndiaIndia@#@#@","IndiaIndiaIndia@#@#@#","GujaratIndiaIndia@#@#@", "AhmedabadIndiaIndia@#@","132465IndiaIndia@#@#","9998979695@#$IndiaIndia"});
+        return data.toArray(new Object[0][]);
     }
 
     @AfterClass
