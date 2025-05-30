@@ -213,4 +213,10 @@ public class SignUpLogInPage extends BasePage {
     public void logInPasswordClear(){
         loginPasswordField.clear();
     }
+    public void signUpNameFieldClear(){
+        signUpNameField.clear();
+    }
+    public void signUpEmailFieldClear(){
+        signUpEmailField.clear();
+    }
 }

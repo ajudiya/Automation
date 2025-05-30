@@ -3,7 +3,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.Header;
 import pages.SignUpLogInPage;
-import untilities.UserData;
 
 public class LogInTestCases extends BaseClassTest{
     private Header header;
@@ -24,5 +23,15 @@ public class LogInTestCases extends BaseClassTest{
         signUpLogInPage.logInPasswordClear();
         signUpLogInPage.setLoginPasswordField(password);
         signUpLogInPage.setLoginButton();
+    }
+    @Test(dataProvider = "signUpData")
+    public void signUpTestCases(String name, String email){
+        Assert.assertEquals(header.isHomePageVisible(), "color: orange;");
+        header.setSignUpLogInLink();
+        signUpLogInPage.signUpNameFieldClear();
+        signUpLogInPage.setSignUpNameField(name);
+        signUpLogInPage.signUpEmailFieldClear();
+        signUpLogInPage.setSignUpEmailField(email);
+        signUpLogInPage.setSignUpButton();
     }
 }

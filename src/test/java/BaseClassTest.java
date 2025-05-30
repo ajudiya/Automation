@@ -13,9 +13,10 @@ public class BaseClassTest {
     protected String baseUrl = "https://automationexercise.com/";
     public JavascriptExecutor js;
     public SoftAssert sf;
+
     @Parameters("browser")
     @BeforeClass
-    public void setup(@Optional("chrome") String browser){
+    public void setup(@Optional("chrome") String browser) {
 //        if (browser.equalsIgnoreCase("chrome")) {
 //            WebDriverManager.chromedriver().setup();
 //            driver = new ChromeDriver();
@@ -33,19 +34,33 @@ public class BaseClassTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
     }
+
     @DataProvider(name = "logInData")
-    public Object[][] getLogInData(){
+    public Object[][] getLogInData() {
         return new Object[][]{
-                {"","",false},
-                {"jai.ajudiya@gmail.com","Jay@1234",true},
-                {"jay.ajudiya@gmail.com","Jay@1234",false},
-                {"jai.ajudiya@gmail.","Jay@1234",false},
-                {"jai.ajudiya@","Jay@1234",false},
-                {"@gmail.com","Jay@1234",false}
+                {"", "", false},
+                {"jai.ajudiya@gmail.com", "Jay@1234", true},
+                {"jay.ajudiya@gmail.com", "Jay@1234", false},
+                {"jai.ajudiya@gmail.", "Jay@1234", false},
+                {"jai.ajudiya@", "Jay@1234", false},
+                {"@gmail.com", "Jay@1234", false}
         };
     }
+
+    @DataProvider(name = "signUpData")
+    public Object[][] getSignUpData() {
+        return new Object[][]{
+                {"", "" },
+                {"Jay@1234", "jay.ajudiya@gmailcom"},
+                {"Jay@1234", "jai.ajudiya@gmail."},
+                {"Jay@1234", "jai.ajudiya@"},
+                {"Jay@1234", "@gmail.com"},
+                {"Jay", "jai.ajudiya@gmail.com"}
+        };
+    }
+
     @AfterClass
-    public void cleanUp()throws InterruptedException{
+    public void cleanUp() throws InterruptedException {
         Thread.sleep(3000);
         driver.quit();
     }
